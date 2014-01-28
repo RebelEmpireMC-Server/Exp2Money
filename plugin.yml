@@ -1,0 +1,23 @@
+name: Exp2Money
+main: sigler.rebelempiremc.com.Exp
+version: 1.0
+description: Converts exp to money
+author: 97WaterPolo
+website: http://RebelEmpireMC.com
+
+commands:
+   expmoney:
+     description: Allows you to transfer XP to money
+     aliases: [em]
+     permission: remc.expmoney.use
+   exp:
+     description: Allows you to see how much XP you have!
+     aliases: [xp]
+     permission: remc.expmoney.exp
+permissions:
+   remc.expmoney.use:
+     description: Allows you to use the expmoney command
+     default: op
+   remc.expmoney.exp:
+     description: Allows you to use the exp command
+     default: op
