@@ -6,6 +6,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -59,7 +60,7 @@ public class Exp extends JavaPlugin
 		setupChat();
 		saveDefaultConfig();
 		getServer().getLogger().info("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		getServer().getLogger().info("Exp2Money has been enabled!");
+		getServer().getLogger().info("Exp2Money V1.2 has been enabled!");
 		getServer().getLogger().info("Author: 97WaterPolo");
 		getServer().getLogger().info("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	}
@@ -78,6 +79,7 @@ public class Exp extends JavaPlugin
 			{
 				int rate = this.getConfig().getInt("TransferRate");
 				int exp = player.getTotalExperience();
+				player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1F, 1F);
 				player.sendMessage(ChatColor.GREEN + "Currently you have " + ChatColor.RED + exp + ChatColor.GREEN + "which can be transferred at a rate of " + ChatColor.RED + rate + ChatColor.GREEN + "per exp using /em.");
 			}
 		}
@@ -97,9 +99,11 @@ public class Exp extends JavaPlugin
 				} else {
 					player.sendMessage(String.format("An error occured: %s", r.errorMessage));
 				}
+				player.playSound(player.getLocation(), Sound.LEVEL_UP, 1F, 1F);
 				player.setExp(0);
 				player.setLevel(0);
 				player.setTotalExperience(0);
+				
 			}
 		}
 		return false;
